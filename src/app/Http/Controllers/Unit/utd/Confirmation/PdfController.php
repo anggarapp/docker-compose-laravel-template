@@ -10,7 +10,7 @@ class PdfController extends Controller
 {
     public function getPdf(string $mail_url)
     {
-        $pdfFile = Http::get('http://192.168.1.201:801/api/consultation/pdf/d2fed01a501802b3442ff1168266a400f5c9bc89')->body();
+        $pdfFile = Http::get('http://' . env('INTERNAL_APP_ADDRESS') . '/api/consultation/pdf/d2fed01a501802b3442ff1168266a400f5c9bc89')->body();
         // dd($pdfFile);
         return response()->streamDownload(function () use ($pdfFile) {
             echo $pdfFile;
